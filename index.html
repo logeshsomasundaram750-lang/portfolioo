@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="Portfolio of Logesh S, Computer Science Engineering student and full-stack web developer.">
+  <title>Logesh S | Developer Portfolio</title>
+  <style>
+    :root {
+      --bg: #090d18;
+      --surface: #111827;
+      --surface-2: #151f31;
+      --text: #eef3ff;
+      --muted: #a5b1c7;
+      --accent: #66e3c4;
+      --accent-2: #7aa7ff;
+      --line: rgba(180, 198, 225, .14);
+      --glow: rgba(102, 227, 196, .13);
+      --max: 1120px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body {
+      margin: 0; color: var(--text); background:
+        radial-gradient(ellipse at 82% 8%, rgba(72, 113, 190, .16), transparent 34%),
+        radial-gradient(ellipse at 8% 28%, var(--glow), transparent 30%), var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: auto; }
+    .nav {
+      position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px);
+      background: rgba(9, 13, 24, .82); border-bottom: 1px solid var(--line);
+    }
+    .nav-inner { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; letter-spacing: .04em; font-size: 1.12rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: var(--muted); font-size: .92rem; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--accent); }
+    .menu-btn { display: none; border: 1px solid var(--line); color: var(--text); background: var(--surface); padding: 8px 12px; border-radius: 10px; }
+    .hero { min-height: 640px; display: grid; grid-template-columns: 1.35fr .85fr; gap: 50px; align-items: center; padding: 88px 0 80px; }
+    .eyebrow { color: var(--accent); font-size: .8rem; text-transform: uppercase; letter-spacing: .2em; font-weight: 800; }
+    h1 { font-size: clamp(3rem, 7vw, 5.8rem); line-height: 1.02; letter-spacing: -.055em; margin: 18px 0 20px; }
+    h1 span { color: var(--accent); }
+    .hero-copy { max-width: 650px; color: var(--muted); font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; padding: 12px 19px; border-radius: 12px; font-weight: 750; border: 1px solid var(--line); transition: .2s ease; }
+    .btn.primary { background: var(--accent); color: #071411; border-color: var(--accent); }
+    .btn.secondary { background: rgba(255,255,255,.025); color: var(--text); }
+    .btn:hover { transform: translateY(-3px); }
+    .hero-card { position: relative; border: 1px solid var(--line); border-radius: 26px; padding: 30px; background: linear-gradient(145deg, rgba(21,31,49,.95), rgba(12,18,31,.92)); box-shadow: 0 25px 80px rgba(0,0,0,.28); }
+    .avatar { width: 90px; height: 90px; display: grid; place-items: center; border-radius: 25px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #08121a; font-size: 2rem; font-weight: 900; margin-bottom: 24px; }
+    .hero-card h2 { margin: 0 0 5px; font-size: 1.45rem; }
+    .hero-card p { color: var(--muted); margin: 0; }
+    .quick-facts { display: grid; gap: 13px; margin-top: 25px; }
+    .fact { display: flex; gap: 12px; align-items: center; color: var(--muted); font-size: .94rem; }
+    .fact b { color: var(--text); font-weight: 650; }
+    section { padding: 76px 0; }
+    .section-head { margin-bottom: 30px; }
+    .section-head h2 { font-size: clamp(2rem, 4vw, 2.8rem); letter-spacing: -.04em; margin: 7px 0; }
+    .section-head p { color: var(--muted); margin: 0; max-width: 680px; }
+    .panel { background: rgba(17,24,39,.78); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+    .about-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 20px; }
+    .about-text { color: var(--muted); margin: 0; }
+    .focus-list { display: grid; gap: 12px; }
+    .focus-item { padding: 13px 15px; border-radius: 12px; background: var(--surface-2); color: var(--text); }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .skill-card h3 { margin: 0 0 14px; font-size: 1rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag { color: #d9e4f7; background: rgba(122,167,255,.10); border: 1px solid rgba(122,167,255,.18); padding: 6px 10px; border-radius: 999px; font-size: .83rem; }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 23px 25px; border: 1px solid var(--line); border-radius: 17px; background: rgba(17,24,39,.72); }
+    .timeline-label { color: var(--accent); font-weight: 750; }
+    .timeline-item h3 { margin: 0 0 4px; font-size: 1.1rem; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+    .subline { color: var(--muted); font-size: .9rem; margin-bottom: 10px !important; }
+    .project-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .project { display: flex; flex-direction: column; min-height: 280px; }
+    .project-number { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .15em; }
+    .project h3 { font-size: 1.2rem; line-height: 1.3; margin: 13px 0 10px; }
+    .project p { color: var(--muted); margin: 0 0 20px; font-size: .94rem; }
+    .project .tags { margin-top: auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .contact-link { display: flex; align-items: center; gap: 14px; padding: 18px; background: rgba(17,24,39,.78); border: 1px solid var(--line); border-radius: 15px; }
+    .contact-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; color: var(--accent); background: var(--glow); font-size: 1.1rem; }
+    .contact-link small { display: block; color: var(--muted); }
+    .contact-link strong { overflow-wrap: anywhere; }
+    footer { border-top: 1px solid var(--line); padding: 25px 0; color: var(--muted); font-size: .88rem; text-align: center; }
+    .muted-note { color: var(--muted); font-size: .88rem; margin-top: 18px; }
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding: 75px 0; }
+      .hero-card { max-width: 520px; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+      .project-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 30px, var(--max)); }
+      .menu-btn { display: inline-block; }
+      .nav-links { display: none; position: absolute; top: 72px; left: 0; right: 0; padding: 18px 22px 22px; flex-direction: column; align-items: flex-start; background: #0d1422; border-bottom: 1px solid var(--line); }
+      .nav-links.open { display: flex; }
+      .hero { padding: 58px 0; gap: 30px; }
+      h1 { font-size: clamp(2.8rem, 15vw, 4.2rem); }
+      section { padding: 58px 0; }
+      .about-grid, .contact-grid, .project-grid, .skills-grid { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 7px; }
+      .panel { padding: 22px; }
+    }
+    @media print {
+      .nav, .hero-actions { display: none !important; }
+      body { background: #090d18; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      section { padding: 35px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#home">LOGESH<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#education">Education</a><a href="#skills">Skills</a>
+        <a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="hero" id="home">
+        <div>
+          <div class="eyebrow">Computer Science Engineering · Full-Stack Development</div>
+          <h1>Hi, I'm<br><span>Logesh S.</span></h1>
+          <p class="hero-copy">I’m a Computer Science Engineering student interested in building practical, user-friendly web applications. I work with front-end and back-end technologies, databases, and REST APIs to turn ideas into working solutions.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">Explore my work <span aria-hidden="true">↗</span></a>
+            <a class="btn secondary" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div class="avatar" aria-hidden="true">LS</div>
+          <h2>Logesh S</h2>
+          <p>Full-Stack Development Enthusiast</p>
+          <div class="quick-facts">
+            <div class="fact"><span>⌖</span><span><b>Location</b><br>Perundurai, Erode, Tamil Nadu</span></div>
+            <div class="fact"><span>✉</span><span><b>Email</b><br>logeshsomasundaram750@gmail.com</span></div>
+            <div class="fact"><span>▣</span><span><b>Phone</b><br>+91 9677613402</span></div>
+          </div>
+        </aside>
+      </section>
+
+      <section id="about">
+        <div class="section-head"><div class="eyebrow">A little about me</div><h2>About Me</h2></div>
+        <div class="about-grid">
+          <div class="panel">
+            <p class="about-text">I am a Computer Science Engineering student with hands-on experience in full-stack web development, object-oriented programming, SQL, REST APIs, and database integration. Through internships and academic projects, I have worked with React.js, Node.js, Express.js, and MongoDB. I enjoy application development, debugging, CRUD operations, API integration, and creating responsive user interfaces.</p>
+          </div>
+          <div class="panel focus-list">
+            <div class="focus-item">✦ Full-stack web development</div>
+            <div class="focus-item">✦ REST API integration</div>
+            <div class="focus-item">✦ Database-driven applications</div>
+            <div class="focus-item">✦ Responsive user interfaces</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="education">
+        <div class="section-head"><div class="eyebrow">Learning journey</div><h2>Education</h2></div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-label">Present</div>
+            <div><h3>Bachelor of Engineering (B.E.)</h3><p class="subline">Computer Science and Engineering</p><p>Nandha Engineering College, Erode</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-label">2022 – 2024</div>
+            <div><h3>Diploma</h3><p class="subline">Computer Science and Engineering</p><p>Nandha Polytechnic College, Erode</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <div class="section-head"><div class="eyebrow">What I work with</div><h2>Technical Skills</h2><p>Technologies and tools listed in my resume.</p></div>
+        <div class="skills-grid">
+          <div class="panel skill-card"><h3>Programming</h3><div class="tags"><span class="tag">Java</span><span class="tag">C++</span><span class="tag">Python</span><span class="tag">C</span><span class="tag">JavaScript</span></div></div>
+          <div class="panel skill-card"><h3>Web Development</h3><div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">MERN Stack</span></div></div>
+          <div class="panel skill-card"><h3>Database & APIs</h3><div class="tags"><span class="tag">MongoDB</span><span class="tag">SQL</span><span class="tag">REST APIs</span><span class="tag">CRUD</span></div></div>
+          <div class="panel skill-card"><h3>Tools</h3><div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span></div></div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <div class="section-head"><div class="eyebrow">Practical experience</div><h2>Internship Experience</h2></div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-label">Erode</div>
+            <div><h3>W3 App Developers</h3><p>Developed and integrated front-end and back-end application components with database connectivity. Worked across UI components, server-side logic, and database operations, applying debugging and software development practices.</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-label">Salem</div>
+            <div><h3>OdugaTech</h3><p>Contributed to full-stack application development involving front-end interfaces, backend services, and database connectivity. Worked with API-based communication, debugging, and maintainable, user-oriented application features.</p></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="section-head"><div class="eyebrow">Selected work</div><h2>Projects</h2><p>Academic and development projects described in my resume.</p></div>
+        <div class="project-grid">
+          <article class="panel project">
+            <div class="project-number">PROJECT 01</div><h3>E-Commerce Website</h3>
+            <p>Built a full-stack e-commerce application with responsive product listings, reusable React components, backend services, product operations, and REST API integration. Applied CRUD operations, form handling, and basic input validation.</p>
+            <div class="tags"><span class="tag">MongoDB</span><span class="tag">Express.js</span><span class="tag">React.js</span><span class="tag">Node.js</span></div>
+          </article>
+          <article class="panel project">
+            <div class="project-number">PROJECT 02</div><h3>Expiry Tracker System</h3>
+            <p>Developed an application concept for managing product and expiry-date information. Supports adding, viewing, updating, and tracking items, with status tracking for products approaching expiry.</p>
+            <div class="tags"><span class="tag">Database</span><span class="tag">Validation</span><span class="tag">User Interface</span></div>
+          </article>
+          <article class="panel project">
+            <div class="project-number">PROJECT 03</div><h3>Arduino-Based Medicine Detection System</h3>
+            <p>Developed an Arduino-based prototype for medicine identification and detection using embedded hardware and programmed control logic, sensing components, and system responses.</p>
+            <div class="tags"><span class="tag">Arduino</span><span class="tag">Embedded Programming</span><span class="tag">Hardware Interfacing</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="section-head"><div class="eyebrow">Let's connect</div><h2>Contact Me</h2><p>Have an opportunity or a project idea? Feel free to reach out.</p></div>
+        <div class="contact-grid">
+          <a class="contact-link" href="mailto:logeshsomasundaram750@gmail.com"><span class="contact-icon">✉</span><span><small>Email</small><strong>logeshsomasundaram750@gmail.com</strong></span></a>
+          <a class="contact-link" href="tel:+919677613402"><span class="contact-icon">☎</span><span><small>Phone</small><strong>+91 9677613402</strong></span></a>
+          <div class="contact-link"><span class="contact-icon">⌖</span><span><small>Location</small><strong>Perundurai, Erode, Tamil Nadu</strong></span></div>
+          <div class="contact-link"><span class="contact-icon">⌘</span><span><small>Professional focus</small><strong>Full-Stack Web Development</strong></span></div>
+        </div>
+        <p class="muted-note">GitHub profile and project repository links were not included in the resume. Add them when available.</p>
+      </section>
+    </div>
+  </main>
+  <footer><div class="wrap">© <span id="year"></span> Logesh S. Designed with care.</div></footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
